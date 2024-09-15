@@ -10,6 +10,8 @@ public class PlayerAuthoring : MonoBehaviour
 
     public GameObject ProjectilePrefab;
 
+    public float ProjectileLifeTime;
+
     class PlayerAuthoringBaker : Baker<PlayerAuthoring>
     {
         public override void Bake(PlayerAuthoring authoring)
@@ -31,6 +33,11 @@ public class PlayerAuthoring : MonoBehaviour
             {
                 Value = GetEntity(authoring.ProjectilePrefab, TransformUsageFlags.Dynamic)
             }) ;
+
+            AddComponent(playerEntity, new ProjectileLifeTime
+            {
+                Value = authoring.ProjectileLifeTime
+            });
         }
     }
 }
@@ -58,3 +65,15 @@ public struct ProjectileMoveSpeed : IComponentData
 }
 
 public struct FireProjectileTag : IComponentData, IEnableableComponent { }
+
+public struct  ProjectileLifeTime : IComponentData
+{
+    public float Value;
+}
+
+public struct LifeTime : IComponentData
+{
+    public float Value;
+}
+
+public struct IsDestroying : IComponentData { }
