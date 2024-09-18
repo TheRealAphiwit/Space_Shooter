@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5076121636044913808}
   - component: {fileID: 1076931521478396438}
   m_Layer: 0
-  m_Name: Prefab_Circle_1
+  m_Name: Enemy_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

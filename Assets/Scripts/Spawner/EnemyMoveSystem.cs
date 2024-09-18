@@ -13,16 +13,9 @@ public partial struct EnemyMoveSystem : ISystem
     {
         float deltaTime = SystemAPI.Time.DeltaTime;
 
-        foreach (var (transform, moveSpeed) in SystemAPI.Query<RefRW<LocalTransform>, MoveSpeed>().WithAll<EnemyTag>())
+        foreach (var (transform, enemyMoveSpeed) in SystemAPI.Query<RefRW<LocalTransform>, EnemyMoveSpeed>().WithAll<EnemyTag>())
         {
-            transform.ValueRW.Position += math.down() * moveSpeed.Value * deltaTime;
+            transform.ValueRW.Position += math.down() * enemyMoveSpeed.Value * deltaTime;
         }
     }
 }
-
-public struct MoveSpeed : IComponentData
-{
-    public float Value;
-}
-
-public struct EnemyTag : IComponentData { }

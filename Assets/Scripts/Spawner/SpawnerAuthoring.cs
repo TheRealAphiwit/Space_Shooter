@@ -8,6 +8,8 @@ public class SpawnerAuthoring : MonoBehaviour
 {
     public GameObject Prefab;
     public float SpawnRate;
+    public float EnemyMoveSpeed;
+    public float EnemyLifeTime;
 
     class SpawnerBaker : Baker<SpawnerAuthoring>
     {
@@ -21,7 +23,16 @@ public class SpawnerAuthoring : MonoBehaviour
                 SpawnPosition = float2.zero,
                 NextSpawnTime = 0,
                 SpawnRate = authoring.SpawnRate,
+                EnemyMoveSpeed = authoring.EnemyMoveSpeed,
+                EnemyLifeTime = authoring.EnemyLifeTime
             });
         }
     }
 }
+
+public struct EnemyMoveSpeed : IComponentData
+{
+    public float Value;
+}
+
+public struct EnemyTag : IComponentData { }
